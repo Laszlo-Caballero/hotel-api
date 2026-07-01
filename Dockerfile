@@ -13,6 +13,8 @@ RUN npx nest build
 
 FROM base AS runner
 WORKDIR /app
+COPY package.json ./
+RUN pnpm install --prod --no-frozen-lockfile
 
 COPY --from=builder /app/dist ./dist
 # Si la app tiene archivos estáticos o carpetas públicas, las copiamos también
