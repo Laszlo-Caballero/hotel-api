@@ -13,8 +13,6 @@ RUN npx nest build
 
 FROM base AS runner
 WORKDIR /app
-COPY pnpm-lock.yaml package.json ./
-RUN pnpm install --prod --frozen-lockfile
 
 COPY --from=builder /app/dist ./dist
 # Si la app tiene archivos estáticos o carpetas públicas, las copiamos también
