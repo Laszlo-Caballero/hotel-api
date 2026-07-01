@@ -7,9 +7,8 @@ FROM base AS builder
 WORKDIR /app
 
 COPY . .
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
-COPY . .
 RUN npx nest build
 
 FROM base AS runner
